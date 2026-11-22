@@ -1,0 +1,72 @@
+<section class="conductores-heading">
+  <div>
+    <p class="eyebrow">ADMINISTRACIÓN DE LA FLOTA</p>
+
+    <h1>Conductores</h1>
+
+    <p class="conductores-description">
+      Consulta las personas registradas para conducir tus vehículos.
+    </p>
+  </div>
+
+  <span class="conductores-counter">
+    {{ conductores.length }} registrados
+  </span>
+</section>
+
+<section class="row g-4" aria-label="Listado de conductores">
+  @for (conductor of conductores; track conductor.id) {
+    <div class="col-12 col-md-6 col-lg-4">
+      <article class="conductor-card">
+        <div class="conductor-card-top">
+          <span class="conductor-avatar" aria-hidden="true">
+            👤
+          </span>
+
+          @if (conductor.activo) {
+            <span class="status-badge status-active">
+              Activo
+            </span>
+          } @else {
+            <span class="status-badge status-inactive">
+              Inactivo
+            </span>
+          }
+        </div>
+
+        <h2>{{ conductor.nombre }}</h2>
+
+        <p class="conductor-reference">
+          Conductor #{{ conductor.id }}
+        </p>
+
+        <dl class="conductor-data">
+          <div>
+            <dt>Documento</dt>
+            <dd>{{ conductor.documento }}</dd>
+          </div>
+
+          <div>
+            <dt>Teléfono</dt>
+            <dd>{{ conductor.telefono }}</dd>
+          </div>
+
+          <div>
+            <dt>Correo electrónico</dt>
+            <dd>{{ conductor.email }}</dd>
+          </div>
+        </dl>
+      </article>
+    </div>
+  }
+</section>
+
+@if (conductores.length === 0) {
+  <div class="conductores-empty">
+    <h2>No hay conductores registrados</h2>
+
+    <p>
+      Los conductores aparecerán aquí cuando estén disponibles.
+    </p>
+  </div>
+}
