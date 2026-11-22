@@ -9,9 +9,7 @@
     </p>
   </div>
 
-  <span class="conductores-counter">
-    {{ conductores.length }} registrados
-  </span>
+  <span class="conductores-counter"> {{ conductores.length }} registrados </span>
 </section>
 
 <section class="row g-4" aria-label="Listado de conductores">
@@ -19,26 +17,18 @@
     <div class="col-12 col-md-6 col-lg-4">
       <article class="conductor-card">
         <div class="conductor-card-top">
-          <span class="conductor-avatar" aria-hidden="true">
-            👤
-          </span>
+          <span class="conductor-avatar" aria-hidden="true"> 👤 </span>
 
           @if (conductor.activo) {
-            <span class="status-badge status-active">
-              Activo
-            </span>
+            <span class="status-badge status-active"> Activo </span>
           } @else {
-            <span class="status-badge status-inactive">
-              Inactivo
-            </span>
+            <span class="status-badge status-inactive"> Inactivo </span>
           }
         </div>
 
         <h2>{{ conductor.nombre }}</h2>
 
-        <p class="conductor-reference">
-          Conductor #{{ conductor.id }}
-        </p>
+        <p class="conductor-reference">Conductor #{{ conductor.id }}</p>
 
         <dl class="conductor-data">
           <div>
@@ -56,6 +46,9 @@
             <dd>{{ conductor.email }}</dd>
           </div>
         </dl>
+        <a [routerLink]="['/conductores', conductor.id]" class="conductor-detail-link">
+          Ver detalle →
+        </a>
       </article>
     </div>
   }
@@ -65,8 +58,6 @@
   <div class="conductores-empty">
     <h2>No hay conductores registrados</h2>
 
-    <p>
-      Los conductores aparecerán aquí cuando estén disponibles.
-    </p>
+    <p>Los conductores aparecerán aquí cuando estén disponibles.</p>
   </div>
 }

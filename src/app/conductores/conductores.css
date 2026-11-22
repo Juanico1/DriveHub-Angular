@@ -129,3 +129,20 @@
     padding: 20px;
   }
 }
+
+.conductor-detail-link {
+  display: block;
+  margin-top: 22px;
+  padding: 12px 16px;
+  background: var(--primary);
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.conductor-detail-link:hover {
+  background: var(--primary-dark);
+  color: white;
+}

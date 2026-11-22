@@ -5,7 +5,6 @@ import type { Conductor } from '../models/conductor';
 @Injectable({
   providedIn: 'root',
 })
-
 export class ConductorService {
   private conductores: Conductor[] = [
     {
@@ -36,5 +35,9 @@ export class ConductorService {
 
   getConductores(): Conductor[] {
     return this.conductores;
+  }
+
+  getConductorById(id: number): Conductor | undefined {
+    return this.conductores.find((conductor) => conductor.id === id);
   }
 }

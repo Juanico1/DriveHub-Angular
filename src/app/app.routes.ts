@@ -5,6 +5,7 @@ import { Conductores } from './conductores/conductores';
 import { Gastos } from './gastos/gastos';
 import { Gasolina } from './gasolina/gasolina';
 import { Mantenimiento } from './mantenimiento/mantenimiento';
+import { ConductorDetalle } from './conductor-detalle/conductor-detalle';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,10 @@ export const routes: Routes = [
   {
     path: 'conductores',
     component: Conductores,
+  },
+  {
+    path: 'conductores/:id',
+    component: ConductorDetalle,
   },
   {
     path: '**',

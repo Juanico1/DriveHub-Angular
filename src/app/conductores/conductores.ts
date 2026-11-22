@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import type { Conductor } from '../models/conductor';
 import { ConductorService } from '../services/conductor';
 
 @Component({
   selector: 'app-conductores',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './conductores.html',
   styleUrl: './conductores.css',
 })
