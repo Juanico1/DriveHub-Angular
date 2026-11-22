@@ -1,0 +1,96 @@
+<section class="welcome-panel">
+  <div>
+    <p class="eyebrow">TU VEHÍCULO, BAJO CONTROL</p>
+
+    <h1>Hola, Nicolás</h1>
+
+    <p class="section-description">
+      Consulta tus movimientos y organiza los gastos de tu vehículo.
+    </p>
+  </div>
+
+  <div class="vehicle-chip">
+    <span aria-hidden="true">🚘</span>
+
+    <div>
+      <small>Mi vehículo</small>
+      <strong>Renault Logan</strong>
+    </div>
+  </div>
+</section>
+
+<section class="row g-3 mb-4" aria-label="Resumen de ejemplo">
+  <div class="col-12 col-md-4">
+    <article class="summary-card">
+      <span class="summary-label">Ingresos registrados</span>
+      <strong class="text-income">$ 180.000</strong>
+    </article>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <article class="summary-card">
+      <span class="summary-label">Gastos registrados</span>
+      <strong class="text-expense">$ 120.000</strong>
+    </article>
+  </div>
+
+  <div class="col-12 col-md-4">
+    <article class="summary-card balance-card">
+      <span class="summary-label">Balance disponible</span>
+      <strong>$ 60.000</strong>
+    </article>
+  </div>
+</section>
+
+<section class="content-panel">
+  <div class="section-heading">
+    <div>
+      <h2>Actividad reciente</h2>
+      <p>Los últimos movimientos de tu vehículo.</p>
+    </div>
+  </div>
+
+  <div class="activity-list">
+    @for (movimiento of movimientos; track movimiento.id) {
+      <article class="movement-card">
+        <span class="movement-icon" aria-hidden="true">
+          {{ movimiento.icono }}
+        </span>
+
+        <div class="movement-description">
+          <h3>{{ movimiento.titulo }}</h3>
+          <p>{{ movimiento.detalle }}</p>
+          <small>{{ movimiento.fecha }}</small>
+        </div>
+
+        <div class="movement-amount">
+          @if (movimiento.tipo === 'gasto') {
+            <strong class="text-expense">
+              − {{ movimiento.valor }}
+            </strong>
+
+            <small>Gasto</small>
+          } @else {
+            <strong class="text-income">
+              + {{ movimiento.valor }}
+            </strong>
+
+            <small>Ingreso</small>
+          }
+        </div>
+      </article>
+    }
+  </div>
+
+  <div class="panel-bottom">
+    <p>¿Tanqueaste o realizaste un mantenimiento?</p>
+
+    <a
+      routerLink="/gastos"
+      class="add-button"
+      aria-label="Registrar un gasto"
+    >
+      +
+    </a>
+  </div>
+</section>

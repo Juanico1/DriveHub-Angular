@@ -1,0 +1,162 @@
+<a routerLink="/gastos" class="back-link">
+  ← Volver a tipos de gasto
+</a>
+
+<section class="form-panel">
+  <div class="form-heading">
+    <span class="category-icon" aria-hidden="true">⛽</span>
+
+    <div>
+      <p class="eyebrow">NUEVO GASTO</p>
+      <h1>Registro de gasolina</h1>
+      <p>Información de la recarga de tu vehículo.</p>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12">
+      <label for="gas-vehiculo" class="form-label">
+        Vehículo
+      </label>
+
+      <select id="gas-vehiculo" class="form-select">
+        <option>Renault Logan</option>
+        <option>Chevrolet Onix</option>
+      </select>
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <label for="gas-fecha" class="form-label">
+        Fecha
+      </label>
+
+      <input
+        id="gas-fecha"
+        type="date"
+        class="form-control"
+      >
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <label for="gas-hora" class="form-label">
+        Hora
+      </label>
+
+      <input
+        id="gas-hora"
+        type="time"
+        class="form-control"
+      >
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <label for="gas-odometro" class="form-label">
+        Odómetro (km)
+      </label>
+
+      <input
+        id="gas-odometro"
+        type="number"
+        min="0"
+        class="form-control"
+        placeholder="Ejemplo: 19547"
+      >
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <label for="gas-tipo" class="form-label">
+        Tipo de combustible
+      </label>
+
+      <select id="gas-tipo" class="form-select">
+        <option>Corriente</option>
+        <option>Extra</option>
+        <option>Diésel</option>
+      </select>
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <label for="gas-precio" class="form-label">
+        Precio por galón (COP)
+      </label>
+
+      <input
+        id="gas-precio"
+        type="number"
+        min="0"
+        class="form-control"
+        placeholder="Ejemplo: 15000"
+      >
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <label for="gas-cantidad" class="form-label">
+        Cantidad de galones
+      </label>
+
+      <input
+        id="gas-cantidad"
+        type="number"
+        min="0"
+        step="0.01"
+        class="form-control"
+        placeholder="Ejemplo: 2"
+      >
+    </div>
+
+    <div class="col-12">
+      <label for="gas-total" class="form-label">
+        Valor total pagado (COP)
+      </label>
+
+      <input
+        id="gas-total"
+        type="number"
+        min="0"
+        class="form-control"
+        placeholder="Ejemplo: 30000"
+      >
+    </div>
+
+    <div class="col-12">
+      <label for="gas-estacion" class="form-label">
+        Estación de servicio
+      </label>
+
+      <input
+        id="gas-estacion"
+        type="text"
+        class="form-control"
+        placeholder="Ejemplo: Texaco Calle 72"
+      >
+    </div>
+
+    <div class="col-12">
+      <label for="gas-conductor" class="form-label">
+        Conductor
+      </label>
+
+      <input
+        id="gas-conductor"
+        type="text"
+        class="form-control"
+        placeholder="Nombre del conductor"
+      >
+    </div>
+  </div>
+
+  <p class="form-notice">
+    El cálculo del total y el guardado estarán disponibles
+    en una siguiente etapa.
+  </p>
+
+  <div class="form-actions">
+    <a routerLink="/gastos" class="btn btn-outline-secondary">
+      Volver
+    </a>
+
+    <button type="button" class="btn btn-drivehub" disabled>
+      Guardar · Próximamente
+    </button>
+  </div>
+</section>

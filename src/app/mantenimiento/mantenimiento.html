@@ -1,0 +1,135 @@
+<a routerLink="/gastos" class="back-link">
+  ← Volver a tipos de gasto
+</a>
+
+<section class="form-panel">
+  <div class="form-heading">
+    <span class="category-icon" aria-hidden="true">🔧</span>
+
+    <div>
+      <p class="eyebrow">NUEVO GASTO</p>
+      <h1>Registro de mantenimiento</h1>
+      <p>Información del servicio realizado a tu vehículo.</p>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12">
+      <label for="mant-vehiculo" class="form-label">
+        Vehículo
+      </label>
+
+      <select id="mant-vehiculo" class="form-select">
+        <option>Renault Logan</option>
+        <option>Chevrolet Onix</option>
+      </select>
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <label for="mant-fecha" class="form-label">
+        Fecha
+      </label>
+
+      <input
+        id="mant-fecha"
+        type="date"
+        class="form-control"
+      >
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <label for="mant-hora" class="form-label">
+        Hora
+      </label>
+
+      <input
+        id="mant-hora"
+        type="time"
+        class="form-control"
+      >
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <label for="mant-odometro" class="form-label">
+        Odómetro (km)
+      </label>
+
+      <input
+        id="mant-odometro"
+        type="number"
+        min="0"
+        class="form-control"
+        placeholder="Ejemplo: 19547"
+      >
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <label for="mant-servicio" class="form-label">
+        Tipo de servicio
+      </label>
+
+      <select id="mant-servicio" class="form-select">
+        <option>Cambio de aceite</option>
+        <option>Despinchado</option>
+        <option>Revisión de frenos</option>
+        <option>Mantenimiento general</option>
+        <option>Otro</option>
+      </select>
+    </div>
+
+    <div class="col-12">
+      <label for="mant-total" class="form-label">
+        Valor total (COP)
+      </label>
+
+      <input
+        id="mant-total"
+        type="number"
+        min="0"
+        class="form-control"
+        placeholder="Ejemplo: 25000"
+      >
+    </div>
+
+    <div class="col-12">
+      <label for="mant-lugar" class="form-label">
+        Taller o establecimiento
+      </label>
+
+      <input
+        id="mant-lugar"
+        type="text"
+        class="form-control"
+        placeholder="Nombre del establecimiento"
+      >
+    </div>
+
+    <div class="col-12">
+      <label for="mant-notas" class="form-label">
+        Notas
+      </label>
+
+      <textarea
+        id="mant-notas"
+        class="form-control"
+        rows="3"
+        placeholder="Describe el mantenimiento realizado"
+      ></textarea>
+    </div>
+  </div>
+
+  <p class="form-notice">
+    Avance de interfaz: puedes diligenciar los campos.
+    El guardado estará disponible en una siguiente etapa.
+  </p>
+
+  <div class="form-actions">
+    <a routerLink="/gastos" class="btn btn-outline-secondary">
+      Volver
+    </a>
+
+    <button type="button" class="btn btn-drivehub" disabled>
+      Guardar · Próximamente
+    </button>
+  </div>
+</section>
