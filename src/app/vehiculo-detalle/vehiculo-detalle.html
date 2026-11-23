@@ -1,0 +1,101 @@
+<a routerLink="/vehiculos" class="back-link"> ← Volver a vehículos </a>
+
+@if (vehiculo) {
+  <section class="detail-panel">
+    <header class="detail-header">
+      <span class="detail-avatar" aria-hidden="true"> 🚘 </span>
+
+      <div class="detail-title">
+        <p class="eyebrow">INFORMACIÓN DEL VEHÍCULO</p>
+
+        <h1>{{ vehiculo.marca }} {{ vehiculo.modelo }}</h1>
+
+        <p class="detail-reference">Placa {{ vehiculo.placa }}</p>
+      </div>
+
+      <span class="badge rounded-pill bg-primary">
+        {{ vehiculo.estado }}
+      </span>
+    </header>
+
+    <div class="detail-body">
+      <h2>Datos del vehículo</h2>
+
+      <dl class="row g-4 mb-0">
+        <div class="col-12 col-md-6">
+          <dt>Placa</dt>
+          <dd>{{ vehiculo.placa }}</dd>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <dt>Marca</dt>
+          <dd>{{ vehiculo.marca }}</dd>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <dt>Modelo</dt>
+          <dd>{{ vehiculo.modelo }}</dd>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <dt>Año</dt>
+          <dd>{{ vehiculo.anio }}</dd>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <dt>Kilometraje</dt>
+          <dd>{{ vehiculo.kilometraje }} km</dd>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <dt>Estado</dt>
+          <dd>{{ vehiculo.estado }}</dd>
+        </div>
+      </dl>
+
+      <section class="assignment-panel" aria-labelledby="assignment-title">
+        <div class="assignment-info">
+          <span class="assignment-avatar" aria-hidden="true"> 👤 </span>
+
+          <div class="assignment-text">
+            <h2 id="assignment-title" class="assignment-label">Conductor asignado</h2>
+
+            @if (conductor) {
+              <p class="assignment-name">
+                {{ conductor.nombre }}
+              </p>
+
+              <p class="assignment-document">Documento: {{ conductor.documento }}</p>
+            } @else {
+              @if (vehiculo.conductorId === null) {
+                <p class="assignment-name">Sin conductor</p>
+
+                <p class="assignment-document">Este vehículo todavía no tiene una asignación.</p>
+              } @else {
+                <p class="assignment-name">Información no disponible</p>
+
+                <p class="assignment-document">No se encontró el conductor asociado.</p>
+              }
+            }
+          </div>
+        </div>
+
+        @if (conductor) {
+          <a [routerLink]="['/conductores', conductor.id]" class="assignment-link">
+            Ver perfil →
+          </a>
+        }
+      </section>
+    </div>
+  </section>
+} @else {
+  <section class="not-found-panel">
+    <span class="not-found-icon" aria-hidden="true"> 🔎 </span>
+
+    <h1>Vehículo no encontrado</h1>
+
+    <p>No existe un vehículo con el identificador de esta dirección.</p>
+
+    <a routerLink="/vehiculos" class="detail-button"> Volver al listado </a>
+  </section>
+}
