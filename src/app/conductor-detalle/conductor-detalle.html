@@ -1,0 +1,75 @@
+<a routerLink="/conductores" class="back-link">
+  ← Volver a conductores
+</a>
+
+@if (conductor) {
+  <section class="detail-panel">
+    <header class="detail-header">
+      <span class="detail-avatar" aria-hidden="true">
+        👤
+      </span>
+
+      <div class="detail-title">
+        <p class="eyebrow">PERFIL DEL CONDUCTOR</p>
+
+        <h1>{{ conductor.nombre }}</h1>
+
+        <p class="detail-reference">
+          Conductor #{{ conductor.id }}
+        </p>
+      </div>
+
+      @if (conductor.activo) {
+        <span class="badge rounded-pill bg-success">
+          Activo
+        </span>
+      } @else {
+        <span class="badge rounded-pill bg-secondary">
+          Inactivo
+        </span>
+      }
+    </header>
+
+    <div class="detail-body">
+      <h2>Información del conductor</h2>
+
+      <dl class="row g-4 mb-0">
+        <div class="col-12 col-md-6">
+          <dt>Nombre completo</dt>
+          <dd>{{ conductor.nombre }}</dd>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <dt>Documento</dt>
+          <dd>{{ conductor.documento }}</dd>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <dt>Teléfono</dt>
+          <dd>{{ conductor.telefono }}</dd>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <dt>Correo electrónico</dt>
+          <dd>{{ conductor.email }}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+} @else {
+  <section class="not-found-panel">
+    <span class="not-found-icon" aria-hidden="true">
+      🔎
+    </span>
+
+    <h1>Conductor no encontrado</h1>
+
+    <p>
+      No existe un conductor con el identificador de esta dirección.
+    </p>
+
+    <a routerLink="/conductores" class="detail-button">
+      Volver al listado
+    </a>
+  </section>
+}

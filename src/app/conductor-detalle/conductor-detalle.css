@@ -1,0 +1,151 @@
+.detail-panel {
+  max-width: 850px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: #edf2ff;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-avatar {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 20px;
+  font-size: 40px;
+}
+
+.detail-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.detail-title h1 {
+  margin-bottom: 8px;
+  font-size: clamp(24px, 4vw, 32px);
+  overflow-wrap: anywhere;
+}
+
+.detail-reference {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.detail-header .badge {
+  padding: 9px 14px;
+}
+
+.detail-body {
+  padding: 30px;
+}
+
+.detail-body h2 {
+  margin-bottom: 26px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.detail-body dt {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.detail-body dd {
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.detail-note {
+  margin-top: 30px;
+  padding: 15px;
+  background: #f7f9fc;
+  color: var(--muted);
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.not-found-panel {
+  max-width: 650px;
+  margin: 20px auto;
+  padding: 45px 25px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  text-align: center;
+}
+
+.not-found-icon {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 48px;
+}
+
+.not-found-panel h1 {
+  font-size: 28px;
+}
+
+.not-found-panel p {
+  margin-bottom: 25px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.detail-button {
+  display: inline-block;
+  padding: 12px 20px;
+  background: var(--primary);
+  color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.detail-button:hover {
+  background: var(--primary-dark);
+  color: white;
+}
+
+@media (max-width: 575px) {
+  .detail-header {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 22px;
+  }
+
+  .detail-avatar {
+    width: 56px;
+    height: 56px;
+    font-size: 30px;
+  }
+
+  .detail-title {
+    flex-basis: calc(100% - 72px);
+  }
+
+  .detail-body {
+    padding: 24px 22px;
+  }
+
+  .not-found-panel {
+    padding: 32px 20px;
+  }
+}
