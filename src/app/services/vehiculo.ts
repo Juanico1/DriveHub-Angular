@@ -39,6 +39,8 @@ export class VehiculoService {
     },
   ];
 
+  private siguienteId = 4;
+
   getVehiculos(): Vehiculo[] {
     return this.vehiculos;
   }
@@ -47,5 +49,35 @@ export class VehiculoService {
     return this.vehiculos.find(
       (vehiculo) => vehiculo.id === id
     );
+  }
+
+  crearVehiculo(datos: Vehiculo): Vehiculo | undefined {
+    const placa = datos.placa.trim().toUpperCase();
+
+    const vehiculoExistente = this.vehiculos.find(
+      (vehiculo) =>
+        vehiculo.placa.trim().toUpperCase() === placa
+    );
+
+    if (vehiculoExistente) {
+      return undefined;
+    }
+
+    const nuevoVehiculo: Vehiculo = {
+      id: this.siguienteId,
+      placa: placa,
+      marca: datos.marca.trim(),
+      modelo: datos.modelo.trim(),
+      anio: datos.anio,
+      kilometraje: datos.kilometraje,
+      estado: datos.estado,
+      conductorId: datos.conductorId,
+    };
+
+    this.vehiculos.push(nuevoVehiculo);
+
+    this.siguienteId++;
+
+    return nuevoVehiculo;
   }
 }

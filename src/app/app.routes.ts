@@ -11,6 +11,7 @@ import { ConductorForm } from './conductor-form/conductor-form';
 
 import { Vehiculos } from './vehiculos/vehiculos';
 import { VehiculoDetalle } from './vehiculo-detalle/vehiculo-detalle';
+import { VehiculoForm } from './vehiculo-form/vehiculo-form';
 
 export const routes: Routes = [
   {
@@ -49,6 +50,10 @@ export const routes: Routes = [
   {
     path: 'vehiculos',
     component: Vehiculos,
+  },
+  {
+    path: 'vehiculos/nuevo',
+    component: VehiculoForm,
   },
   {
     path: 'vehiculos/:id',

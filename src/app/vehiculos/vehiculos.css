@@ -149,3 +149,36 @@
     padding: 20px;
   }
 }
+
+.vehiculos-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.new-vehicle-button {
+  display: inline-block;
+  padding: 12px 18px;
+  background: var(--primary);
+  color: white;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.new-vehicle-button:hover {
+  background: var(--primary-dark);
+  color: white;
+}
+
+@media (max-width: 575px) {
+  .vehiculos-actions {
+    width: 100%;
+  }
+
+  .new-vehicle-button {
+    width: 100%;
+  }
+}
