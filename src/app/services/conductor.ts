@@ -33,11 +33,42 @@ export class ConductorService {
     },
   ];
 
+  private siguienteId = 4;
+
   getConductores(): Conductor[] {
     return this.conductores;
   }
 
   getConductorById(id: number): Conductor | undefined {
-    return this.conductores.find((conductor) => conductor.id === id);
+    return this.conductores.find(
+      (conductor) => conductor.id === id
+    );
+  }
+
+  crearConductor(datos: Conductor): Conductor | undefined {
+    const documento = datos.documento.trim();
+
+    const conductorExistente = this.conductores.find(
+      (conductor) => conductor.documento === documento
+    );
+
+    if (conductorExistente) {
+      return undefined;
+    }
+
+    const nuevoConductor: Conductor = {
+      id: this.siguienteId,
+      nombre: datos.nombre.trim(),
+      documento: documento,
+      telefono: datos.telefono.trim(),
+      email: datos.email.trim(),
+      activo: datos.activo,
+    };
+
+    this.conductores.push(nuevoConductor);
+
+    this.siguienteId++;
+
+    return nuevoConductor;
   }
 }

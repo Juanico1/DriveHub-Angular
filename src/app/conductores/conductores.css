@@ -146,3 +146,36 @@
   background: var(--primary-dark);
   color: white;
 }
+
+.conductores-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.new-conductor-button {
+  display: inline-block;
+  padding: 12px 18px;
+  background: var(--primary);
+  color: white;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.new-conductor-button:hover {
+  background: var(--primary-dark);
+  color: white;
+}
+
+@media (max-width: 575px) {
+  .conductores-actions {
+    width: 100%;
+  }
+
+  .new-conductor-button {
+    width: 100%;
+  }
+}

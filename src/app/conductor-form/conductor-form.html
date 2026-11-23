@@ -1,0 +1,168 @@
+<a routerLink="/conductores" class="back-link">
+  ← Volver a conductores
+</a>
+
+<section class="form-panel">
+  <div class="form-heading">
+    <span class="category-icon" aria-hidden="true">
+      👤
+    </span>
+
+    <div>
+      <p class="eyebrow">ADMINISTRACIÓN DE LA FLOTA</p>
+
+      <h1>Nuevo conductor</h1>
+
+      <p>Completa los datos para registrar un conductor.</p>
+    </div>
+  </div>
+
+  <form
+    #formulario="ngForm"
+    (ngSubmit)="guardar(formulario)"
+    novalidate
+  >
+    <div class="row g-3">
+      <div class="col-12">
+        <label for="nombre" class="form-label">
+          Nombre completo
+        </label>
+
+        <input
+          id="nombre"
+          name="nombre"
+          type="text"
+          class="form-control"
+          placeholder="Ejemplo: Daniela Pérez"
+          autocomplete="name"
+          required
+          minlength="3"
+          maxlength="80"
+          [(ngModel)]="conductor.nombre"
+          #nombre="ngModel"
+        >
+
+        @if (nombre.invalid && (nombre.touched || formulario.submitted)) {
+          <p class="field-error">
+            Ingresa un nombre de al menos 3 caracteres.
+          </p>
+        }
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <label for="documento" class="form-label">
+          Documento
+        </label>
+
+        <input
+          id="documento"
+          name="documento"
+          type="text"
+          inputmode="numeric"
+          class="form-control"
+          placeholder="Ejemplo: 1000000004"
+          required
+          pattern="[0-9]{6,15}"
+          maxlength="15"
+          [(ngModel)]="conductor.documento"
+          #documento="ngModel"
+        >
+
+        @if (documento.invalid && (documento.touched || formulario.submitted)) {
+          <p class="field-error">
+            El documento debe tener entre 6 y 15 dígitos.
+          </p>
+        }
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <label for="telefono" class="form-label">
+          Teléfono
+        </label>
+
+        <input
+          id="telefono"
+          name="telefono"
+          type="tel"
+          inputmode="numeric"
+          class="form-control"
+          placeholder="Ejemplo: 3101234567"
+          autocomplete="tel"
+          required
+          pattern="[0-9]{7,15}"
+          maxlength="15"
+          [(ngModel)]="conductor.telefono"
+          #telefono="ngModel"
+        >
+
+        @if (telefono.invalid && (telefono.touched || formulario.submitted)) {
+          <p class="field-error">
+            El teléfono debe tener entre 7 y 15 dígitos.
+          </p>
+        }
+      </div>
+
+      <div class="col-12">
+        <label for="email" class="form-label">
+          Correo electrónico
+        </label>
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          class="form-control"
+          placeholder="Ejemplo: daniela@example.com"
+          autocomplete="email"
+          required
+          email
+          maxlength="120"
+          [(ngModel)]="conductor.email"
+          #correo="ngModel"
+        >
+
+        @if (correo.invalid && (correo.touched || formulario.submitted)) {
+          <p class="field-error">
+            Ingresa un correo electrónico válido.
+          </p>
+        }
+      </div>
+
+      <div class="col-12">
+        <div class="form-check mt-2">
+          <input
+            id="activo"
+            name="activo"
+            type="checkbox"
+            class="form-check-input"
+            [(ngModel)]="conductor.activo"
+          >
+
+          <label for="activo" class="form-check-label">
+            Conductor activo
+          </label>
+        </div>
+      </div>
+    </div>
+
+    @if (mensajeError) {
+      <div class="alert alert-danger mt-4" role="alert">
+        {{ mensajeError }}
+      </div>
+    }
+
+    <div class="form-actions">
+      <a routerLink="/conductores" class="btn btn-outline-secondary">
+        Cancelar
+      </a>
+
+      <button
+        type="submit"
+        class="btn btn-drivehub"
+        [disabled]="formulario.invalid"
+      >
+        Guardar conductor
+      </button>
+    </div>
+  </form>
+</section>

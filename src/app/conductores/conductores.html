@@ -9,7 +9,11 @@
     </p>
   </div>
 
-  <span class="conductores-counter"> {{ conductores.length }} registrados </span>
+  <div class="conductores-actions">
+    <span class="conductores-counter"> {{ conductores.length }} registrados </span>
+
+    <a routerLink="/conductores/nuevo" class="new-conductor-button"> + Nuevo conductor </a>
+  </div>
 </section>
 
 <section class="row g-4" aria-label="Listado de conductores">
