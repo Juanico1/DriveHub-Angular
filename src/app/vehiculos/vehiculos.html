@@ -1,0 +1,71 @@
+<section class="vehiculos-heading">
+  <div>
+    <p class="eyebrow">ADMINISTRACIÓN DE LA FLOTA</p>
+
+    <h1>Vehículos</h1>
+
+    <p class="vehiculos-description">Consulta los vehículos y su estado actual.</p>
+  </div>
+
+  <div class="vehiculos-actions">
+    <span class="vehiculos-counter"> {{ vehiculos.length }} registrados </span>
+
+    <a routerLink="/vehiculos/nuevo" class="new-vehicle-button"> + Nuevo vehículo </a>
+  </div>
+</section>
+
+<section class="row g-4" aria-label="Listado de vehículos">
+  @for (vehiculo of vehiculos; track vehiculo.id) {
+    <div class="col-12 col-md-6 col-lg-4">
+      <article class="vehicle-card">
+        <div class="vehicle-card-top">
+          <span class="vehicle-icon" aria-hidden="true"> 🚘 </span>
+
+          <span class="vehicle-status">
+            {{ vehiculo.estado }}
+          </span>
+        </div>
+
+        <p class="vehicle-plate">
+          {{ vehiculo.placa }}
+        </p>
+
+        <h2>{{ vehiculo.marca }} {{ vehiculo.modelo }}</h2>
+
+        <dl class="vehicle-data">
+          <div>
+            <dt>Año</dt>
+            <dd>{{ vehiculo.anio }}</dd>
+          </div>
+
+          <div>
+            <dt>Kilometraje</dt>
+            <dd>{{ vehiculo.kilometraje }} km</dd>
+          </div>
+
+          <div>
+            <dt>Asignación</dt>
+
+            @if (vehiculo.conductorId !== null) {
+              <dd>Con conductor asignado</dd>
+            } @else {
+              <dd>Sin conductor asignado</dd>
+            }
+          </div>
+        </dl>
+
+        <a [routerLink]="['/vehiculos', vehiculo.id]" class="vehicle-detail-link">
+          Ver detalle →
+        </a>
+      </article>
+    </div>
+  }
+</section>
+
+@if (vehiculos.length === 0) {
+  <div class="vehiculos-empty">
+    <h2>No hay vehículos registrados</h2>
+
+    <p>Los vehículos aparecerán aquí cuando estén disponibles.</p>
+  </div>
+}

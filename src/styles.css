@@ -372,7 +372,9 @@ h1 {
   color: var(--text);
   border: 1px solid var(--border);
   border-radius: 20px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .category-card:hover {
@@ -615,5 +617,34 @@ h1 {
 
   .form-actions .btn {
     width: 100%;
+  }
+
+  @media (max-width: 991px) {
+    .header-content {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .profile-badge {
+      margin-left: auto;
+    }
+
+    .main-nav {
+      order: 3;
+      width: 100%;
+      margin-left: 0;
+      flex-wrap: wrap;
+    }
+
+    .main-nav a {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .main-nav a {
+      flex: 1 1 calc(50% - 8px);
+    }
   }
 }
