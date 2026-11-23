@@ -1,43 +1,84 @@
 <section class="welcome-panel">
   <div>
-    <p class="eyebrow">TU VEHÍCULO, BAJO CONTROL</p>
+    <p class="eyebrow">TU FLOTA, BAJO CONTROL</p>
 
-    <h1>Hola, Nicolás</h1>
+    <h1>Hola, Nicolás 👋</h1>
 
     <p class="section-description">
-      Consulta tus movimientos y organiza los gastos de tu vehículo.
+      Consulta los movimientos y organiza los gastos de tus vehículos.
     </p>
   </div>
 
-  <div class="vehicle-chip">
-    <span aria-hidden="true">🚘</span>
+  <div class="vehicle-selector">
+    <span class="selector-icon" aria-hidden="true"> 🚘 </span>
 
-    <div>
-      <small>Mi vehículo</small>
-      <strong>Renault Logan</strong>
+    <div class="selector-field">
+      <label for="vehiculo-inicio"> Consultar movimientos </label>
+
+      <select
+        id="vehiculo-inicio"
+        name="vehiculoInicio"
+        class="form-select"
+        [(ngModel)]="vehiculoId"
+        (ngModelChange)="actualizarResumen($event)"
+      >
+        <option [ngValue]="null">Todos los vehículos</option>
+
+        @for (vehiculo of vehiculos; track vehiculo.id) {
+          <option [ngValue]="vehiculo.id">
+            {{ vehiculo.placa }} · {{ vehiculo.marca }} {{ vehiculo.modelo }}
+          </option>
+        }
+      </select>
     </div>
   </div>
 </section>
 
-<section class="row g-3 mb-4" aria-label="Resumen de ejemplo">
+<div class="home-context">
+  @if (vehiculoSeleccionado) {
+    <span>
+      Movimientos de
+      <strong>
+        {{ vehiculoSeleccionado.marca }}
+        {{ vehiculoSeleccionado.modelo }}
+        · {{ vehiculoSeleccionado.placa }}
+      </strong>
+    </span>
+
+    <a [routerLink]="['/vehiculos', vehiculoSeleccionado.id]"> Ver vehículo → </a>
+  } @else {
+    <span> Resumen general de la flota. Vehículos registrados: {{ vehiculos.length }}. </span>
+  }
+</div>
+
+<section class="row g-3 mb-4" aria-label="Resumen de movimientos">
   <div class="col-12 col-md-4">
     <article class="summary-card">
-      <span class="summary-label">Ingresos registrados</span>
-      <strong class="text-income">$ 180.000</strong>
+      <span class="summary-label"> Ingresos registrados </span>
+
+      <strong class="text-income">
+        {{ moneda(ingresos) }}
+      </strong>
     </article>
   </div>
 
   <div class="col-12 col-md-4">
     <article class="summary-card">
-      <span class="summary-label">Gastos registrados</span>
-      <strong class="text-expense">$ 120.000</strong>
+      <span class="summary-label"> Gastos registrados </span>
+
+      <strong class="text-expense">
+        {{ moneda(gastos) }}
+      </strong>
     </article>
   </div>
 
   <div class="col-12 col-md-4">
     <article class="summary-card balance-card">
-      <span class="summary-label">Balance disponible</span>
-      <strong>$ 60.000</strong>
+      <span class="summary-label"> Balance registrado </span>
+
+      <strong>
+        {{ moneda(balance) }}
+      </strong>
     </article>
   </div>
 </section>
@@ -46,8 +87,11 @@
   <div class="section-heading">
     <div>
       <h2>Actividad reciente</h2>
-      <p>Los últimos movimientos de tu vehículo.</p>
+
+      <p>Movimientos correspondientes a la selección actual.</p>
     </div>
+
+    <span class="demo-badge">Datos de ejemplo</span>
   </div>
 
   <div class="activity-list">
@@ -59,38 +103,40 @@
 
         <div class="movement-description">
           <h3>{{ movimiento.titulo }}</h3>
+
           <p>{{ movimiento.detalle }}</p>
+
           <small>{{ movimiento.fecha }}</small>
         </div>
 
         <div class="movement-amount">
           @if (movimiento.tipo === 'gasto') {
-            <strong class="text-expense">
-              − {{ movimiento.valor }}
-            </strong>
+            <strong class="text-expense"> − {{ moneda(movimiento.valor) }} </strong>
 
             <small>Gasto</small>
           } @else {
-            <strong class="text-income">
-              + {{ movimiento.valor }}
-            </strong>
+            <strong class="text-income"> + {{ moneda(movimiento.valor) }} </strong>
 
             <small>Ingreso</small>
           }
         </div>
       </article>
     }
+
+    @if (movimientos.length === 0) {
+      <div class="movements-empty">
+        <span aria-hidden="true">📋</span>
+
+        <h3>Sin movimientos registrados</h3>
+
+        <p>No hay ingresos ni gastos para esta selección.</p>
+      </div>
+    }
   </div>
 
   <div class="panel-bottom">
     <p>¿Tanqueaste o realizaste un mantenimiento?</p>
 
-    <a
-      routerLink="/gastos"
-      class="add-button"
-      aria-label="Registrar un gasto"
-    >
-      +
-    </a>
+    <a routerLink="/gastos" class="add-button" aria-label="Consultar tipos de gasto"> + </a>
   </div>
 </section>

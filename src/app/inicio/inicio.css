@@ -1,0 +1,97 @@
+.vehicle-selector {
+  width: 340px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.selector-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: #edf2ff;
+  border-radius: 12px;
+  font-size: 24px;
+}
+
+.selector-field {
+  flex: 1;
+  min-width: 0;
+}
+
+.selector-field label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.selector-field .form-select {
+  min-height: 40px;
+  font-size: 12px;
+}
+
+.home-context {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.home-context strong {
+  color: var(--text);
+}
+
+.home-context a {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.movements-empty {
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.movements-empty > span {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 35px;
+}
+
+.movements-empty h3 {
+  margin-bottom: 8px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.movements-empty p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 767px) {
+  .welcome-panel {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .vehicle-selector {
+    width: 100%;
+  }
+}
